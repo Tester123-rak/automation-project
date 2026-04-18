@@ -48,7 +48,7 @@ pipeline {
 
         stage('Generate Reports') {
             steps {
-                bat 'mvn surefire-report:report'
+                bat 'mvn surefire-report:report -DskipTests'
             }
         }
 
