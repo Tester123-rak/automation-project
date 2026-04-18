@@ -24,9 +24,16 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Parallel tests') {
+        parallel{
+        stage('Chrome'){
             steps {
-                bat 'mvn test'
+                bat 'mvn test -Dbrowser=chrome'
+            }
+            stage('Firefox'){
+            steps{
+            bat 'mvn test -Dbrowser=firefox'
+            }
             }
         }
 
