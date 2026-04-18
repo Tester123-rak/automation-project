@@ -30,11 +30,13 @@ pipeline {
             steps {
                 bat 'mvn test -Dbrowser=chrome'
             }
+            }
             stage('Firefox'){
             steps{
             bat 'mvn test -Dbrowser=firefox'
             }
             }
+        }
         }
 
         stage('Generate Reports') {
