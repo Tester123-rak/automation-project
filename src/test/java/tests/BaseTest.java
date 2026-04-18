@@ -23,7 +23,7 @@ public class BaseTest
 
  @BeforeMethod
     public void setDriver() throws  MalformedURLException {
-     String browser=System.getProperty("browser");
+     String browser=System.getProperty("browser" , "chrome");
      URL gridUrl = new URL("http://localhost:4444/wd/hub");
      if(browser.equalsIgnoreCase("chrome")) {
          ChromeOptions options = new ChromeOptions();
