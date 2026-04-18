@@ -12,6 +12,12 @@ pipeline {
 
     stages {
 
+        stage('selenium grid run'){
+            steps{
+                bat 'docker compose up -d'
+                }
+        }
+
         stage('Checkout Code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Tester123-rak/automation-project.git'
@@ -48,6 +54,11 @@ pipeline {
         stage('Archive Results') {
             steps {
                 junit 'target/surefire-reports/*.xml'
+            }
+        }
+        stage('Stop Grid') {
+            steps {
+                bat 'docker compose down'
             }
         }
     }
